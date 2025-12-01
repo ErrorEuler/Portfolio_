@@ -1,0 +1,296 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Jeuel Alvez — Web Developer</title>
+  <style>
+    :root {
+      --bg: #0f1724;
+      --card: #0b1220;
+      --accent: #7dd3fc;
+      --muted: #9fb3c8;
+      --glass: rgba(255, 255, 255, 0.03)
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0
+    }
+
+    body {
+      font-family: Inter, system-ui, Segoe UI, Roboto, 'Helvetica Neue', Arial;
+      background: linear-gradient(180deg, #071029 0%, #071a2a 100%);
+      color: #e6f0f6;
+      -webkit-font-smoothing: antialiased;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 980px;
+      margin: 40px auto;
+      padding: 0 20px
+    }
+
+    .card {
+      background: var(--card);
+      padding: 32px;
+      border-radius: 16px;
+      box-shadow: 0 10px 40px rgba(2, 6, 23, 0.8);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap
+    }
+
+    .hero {
+      gap: 20px;
+      align-items: center
+    }
+
+    h1 {
+      font-size: 32px;
+      font-weight: 800
+    }
+
+    .tag {
+      color: var(--accent);
+      font-weight: 700
+    }
+
+    p.lead {
+      color: var(--muted);
+      margin-top: 8px;
+      font-size: 15px
+    }
+
+    .btn {
+      display: inline-block;
+      margin-top: 16px;
+      padding: 12px 20px;
+      border-radius: 10px;
+      background: linear-gradient(90deg, var(--accent), #60a5fa);
+      color: #0f172a;
+      font-weight: 700;
+      text-decoration: none;
+      font-size: 15px;
+    }
+
+    section {
+      margin-top: 32px
+    }
+
+    h2 {
+      font-size: 24px;
+      margin-bottom: 16px;
+      font-weight: 700
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px
+    }
+
+    .skills ul {
+      list-style: none;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+    }
+
+    .skill {
+      background: var(--glass);
+      padding: 10px 14px;
+      border-radius: 10px;
+      color: var(--muted);
+      font-weight: 600;
+      font-size: 14px;
+      backdrop-filter: blur(4px);
+    }
+
+    .project {
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.03), transparent);
+      padding: 20px;
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .project h3 {
+      margin: 0 0 8px 0;
+      font-size: 20px
+    }
+
+    .meta {
+      color: var(--muted);
+      font-size: 13px;
+      margin-bottom: 12px;
+      font-weight: 500
+    }
+
+    /* Gallery – images show directly, no click needed */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 18px;
+      margin-top: 20px;
+    }
+
+    .gallery img {
+      width: 100%;
+      height: auto;
+      border-radius: 14px;
+      border: 2px solid rgba(125, 211, 252, 0.2);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      transition: all 0.4s ease;
+    }
+
+    .gallery img:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7);
+      border-color: var(--accent);
+    }
+
+    footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 40px;
+      color: var(--muted);
+      font-size: 14px;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    @media(max-width:700px) {
+      .hero {
+        flex-direction: column;
+        align-items: flex-start;
+        text-align: center
+      }
+
+      header {
+        flex-direction: column;
+        text-align: center
+      }
+
+      h1 {
+        font-size: 28px
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="card">
+      <header>
+        <div class="hero">
+          <div>
+            <h1>Jeuel Alvez <span class="tag">(ErrorEuler)</span></h1>
+            <p class="lead">Aspiring Web Developer | BS Information Technology @ President Ramon Magsaysay State
+              University<br />Botolan, Zambales • Open for remote/freelance work</p>
+            <a class="btn" href="mailto:jeuelalvez@gmail.com">Contact Me — jeuelalvez@gmail.com</a>
+          </div>
+        </div>
+        <div style="text-align:right;min-width:150px">
+          <div style="background:rgba(255,255,255,0.03);padding:12px;border-radius:10px;font-size:14px">
+            0945-100-1691<br />jeuelalvez@gmail.com
+          </div>
+        </div>
+      </header>
+
+      <section class="grid">
+        <div>
+          <h2>About Me</h2>
+          <p style="color:var(--muted)">21-year-old aspiring web developer from Zambales, currently studying BS
+            Information Technology. Passionate about building real-world, functional systems — especially for schools
+            and small businesses.</p>
+          <h3 style="margin:16px 0 8px">Strengths</h3>
+          <ul style="color:var(--muted);padding-left:20px">
+            <li>Fast learner & self-motivated</li>
+            <li>Strong attention to detail</li>
+            <li>Problem-solving mindset</li>
+            <li>Team player & good communicator</li>
+          </ul>
+        </div>
+        <div>
+          <h2>Technical Skills</h2>
+          <ul class="skills">
+            <li class="skill">HTML</li>
+            <li class="skill">CSS</li>
+            <li class="skill">JavaScript</li>
+            <li class="skill">PHP</li>
+            <li class="skill">MySQL</li>
+            <li class="skill">Git & GitHub</li>
+            <li class="skill">Responsive Design</li>
+            <li class="skill">Basic UX/UI</li>
+          </ul>
+        </div>
+      </section>
+
+      <section>
+        <h2>Projects</h2>
+
+        <!-- CAPSTONE WITH IMAGES DIRECTLY VISIBLE -->
+        <div class="project">
+          <h3>Automated Class Scheduling System (Capstone)</h3>
+          <div class="meta">Full-Stack • HTML, CSS, JavaScript, PHP, MySQL • Team Development</div>
+          <p style="color:var(--muted)">Web system built for President Ramon Magsaysay State University to automate
+            class scheduling across campuses. Includes role-based access, schedule generation, conflict detection,
+            approval workflow, and public schedule viewer.</p>
+
+          <div class="gallery">
+            <img src="scheduling-dashboard.jpg.png" alt="Program Chair Dashboard">
+            <img src="Screenshot 2025-12-01 011246.png" alt="Public Schedule View">
+            <img src="Screenshot 2025-12-01 011252.png" alt="Login Page">
+          </div>
+        </div>
+
+        <div style="height:16px"></div>
+
+        <div class="project">
+          <h3>Icylicious Cafe — Online Ordering (In Progress)</h3>
+          <div class="meta">Full-Stack • HTML, CSS, JS, PHP, MySQL • Status: Development</div>
+          <p style="color:var(--muted)">Building a complete online ordering + management system for a local cafe.
+            Features product catalog, cart, order tracking, and admin dashboard.</p>
+        </div>
+
+        <div class="gallery">
+          <img src="1151b3e9-5d66-48b7-b96f-dbf396642630.jpg">
+          <img src="ae6bf08e-32bb-492b-9beb-83757d92835b.jpg" >
+          <img src="51605bb3-1664-4de3-8681-16c277f15458.jpg">
+        </div>
+
+      </section>
+
+      <section>
+        <h2>Education</h2>
+        <p style="color:var(--muted)"><strong>Bachelor of Science in Information Technology</strong><br />President
+          Ramon Magsaysay State University (Ongoing)</p>
+      </section>
+
+      <section>
+        <h2>Contact</h2>
+        <p style="color:var(--muted)">Available for freelance and remote opportunities.<br />
+          Email: <a href="mailto:jeuelalvez@gmail.com"
+            style="color:var(--accent);text-decoration:none">jeuelalvez@gmail.com</a> •
+          Phone: 0945-100-1691</p>
+      </section>
+
+      <footer>
+        <div>© 2025 Jeuel Alvez — ErrorEuler</div>
+        <div>Made with ❤️ • Pure HTML & CSS</div>
+      </footer>
+    </div>
+  </div>
+</body>
+
+</html>
