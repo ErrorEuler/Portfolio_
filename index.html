@@ -1,295 +1,319 @@
 <!doctype html>
 <html lang="en">
-
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Jeuel Alvez — Web Developer</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
   <style>
     :root {
-      --bg: #0f1724;
-      --card: #0b1220;
-      --accent: #7dd3fc;
-      --muted: #9fb3c8;
-      --glass: rgba(255, 255, 255, 0.03)
+      --bg: #f8f4ed;
+      --card: #ffffff;
+      --accent: #2c7a7b;
+      --text: #2c3e50;
+      --muted: #64748b;
+      --light: #f1e9dc;
     }
 
     * {
       box-sizing: border-box;
       margin: 0;
-      padding: 0
+      padding: 0;
     }
 
     body {
-      font-family: Inter, system-ui, Segoe UI, Roboto, 'Helvetica Neue', Arial;
-      background: linear-gradient(180deg, #071029 0%, #071a2a 100%);
-      color: #e6f0f6;
-      -webkit-font-smoothing: antialiased;
-      line-height: 1.6;
+      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: linear-gradient(180deg, #f8f4ed 0%, #f1e9dc 100%);
+      color: var(--text);
+      line-height: 1.7;
+      padding-bottom: 60px;
     }
 
     .container {
-      max-width: 980px;
+      max-width: 1000px;
       margin: 40px auto;
-      padding: 0 20px
+      padding: 0 20px;
     }
 
     .card {
       background: var(--card);
-      padding: 32px;
-      border-radius: 16px;
-      box-shadow: 0 10px 40px rgba(2, 6, 23, 0.8);
-      border: 1px solid rgba(255, 255, 255, 0.05);
+      padding: 48px;
+      border-radius: 20px;
+      box-shadow: 0 15px 50px rgba(0, 0, 0, 0.08);
+      border: 1px solid rgba(44, 122, 123, 0.1);
+      transition: all 0.4s ease;
+    }
+
+    .card:hover {
+      box-shadow: 0 25px 70px rgba(0, 0, 0, 0.12);
     }
 
     header {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 20px;
-      flex-wrap: wrap
+      gap: 30px;
+      flex-wrap: wrap;
     }
 
     .hero {
-      gap: 20px;
-      align-items: center
+      flex: 1;
     }
 
     h1 {
-      font-size: 32px;
-      font-weight: 800
+      font-size: 42px;
+      font-weight: 800;
+      color: var(--text);
+      margin-bottom: 8px;
     }
 
     .tag {
       color: var(--accent);
-      font-weight: 700
+      font-weight: 700;
+      font-size: 18px;
     }
 
-    p.lead {
+    .lead {
       color: var(--muted);
-      margin-top: 8px;
-      font-size: 15px
+      font-size: 17px;
+      margin-top: 12px;
+      max-width: 520px;
     }
 
     .btn {
-      display: inline-block;
-      margin-top: 16px;
-      padding: 12px 20px;
-      border-radius: 10px;
-      background: linear-gradient(90deg, var(--accent), #60a5fa);
-      color: #0f172a;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 20px;
+      padding: 14px 28px;
+      background: var(--accent);
+      color: white;
       font-weight: 700;
+      border-radius: 12px;
       text-decoration: none;
-      font-size: 15px;
+      transition: all 0.3s ease;
+      box-shadow: 0 8px 25px rgba(44, 122, 123, 0.3);
+    }
+
+    .btn:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 15px 35px rgba(44, 122, 123, 0.4);
+      background: #236667;
     }
 
     section {
-      margin-top: 32px
+      margin-top: 60px;
     }
 
     h2 {
-      font-size: 24px;
-      margin-bottom: 16px;
-      font-weight: 700
+      font-size: 28px;
+      margin-bottom: 24px;
+      color: var(--text);
+      position: relative;
+      display: inline-block;
+    }
+
+    h2::after {
+      content: '';
+      position: absolute;
+      width: 60px;
+      height: 3px;
+      background: var(--accent);
+      bottom: -8px;
+      left: 0;
+      border-radius: 3px;
     }
 
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 24px
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 40px;
     }
 
     .skills ul {
-      list-style: none;
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 10px;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 12px;
     }
 
     .skill {
-      background: var(--glass);
-      padding: 10px 14px;
-      border-radius: 10px;
+      background: var(--light);
+      padding: 14px 18px;
+      border-radius: 12px;
       color: var(--muted);
       font-weight: 600;
-      font-size: 14px;
-      backdrop-filter: blur(4px);
+      transition: all 0.3s ease;
+    }
+
+    .skill:hover {
+      background: var(--accent);
+      color: white;
+      transform: translateY(-3px);
     }
 
     .project {
-      background: linear-gradient(180deg, rgba(255, 255, 255, 0.03), transparent);
-      padding: 20px;
-      border-radius: 12px;
-      border: 1px solid rgba(255, 255, 255, 0.06);
+      background: var(--light);
+      padding: 28px;
+      border-radius: 16px;
+      margin-bottom: 40px;
+      transition: all 0.4s ease;
     }
 
-    .project h3 {
-      margin: 0 0 8px 0;
-      font-size: 20px
+    .project:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
     }
 
-    .meta {
-      color: var(--muted);
-      font-size: 13px;
-      margin-bottom: 12px;
-      font-weight: 500
-    }
-
-    /* Gallery – images show directly, no click needed */
     .gallery {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 18px;
-      margin-top: 20px;
+      margin-top: 24px;
     }
 
     .gallery img {
       width: 100%;
       height: auto;
-      border-radius: 14px;
-      border: 2px solid rgba(125, 211, 252, 0.2);
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-      transition: all 0.4s ease;
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+      transition: all 0.5s ease;
+      border: 3px solid white;
     }
 
     .gallery img:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7);
-      border-color: var(--accent);
+      transform: scale(1.05) rotate(1deg);
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
     }
 
     footer {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-top: 40px;
+      text-align: center;
+      margin-top: 60px;
       color: var(--muted);
-      font-size: 14px;
-      flex-wrap: wrap;
-      gap: 10px;
+      font-size: 15px;
     }
 
-    @media(max-width:700px) {
-      .hero {
-        flex-direction: column;
-        align-items: flex-start;
-        text-align: center
+    /* Advanced subtle animations */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
       }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
 
-      header {
-        flex-direction: column;
-        text-align: center
-      }
+    .animate {
+      animation: fadeInUp 0.8s ease forwards;
+    }
 
-      h1 {
-        font-size: 28px
-      }
+    @media (max-width: 768px) {
+      h1 { font-size: 34px; }
+      .card { padding: 32px 24px; }
     }
   </style>
 </head>
-
 <body>
   <div class="container">
     <div class="card">
       <header>
         <div class="hero">
-          <div>
-            <h1>Jeuel Alvez <span class="tag">(ErrorEuler)</span></h1>
-            <p class="lead">Aspiring Web Developer | BS Information Technology @ President Ramon Magsaysay State
-              University<br />Botolan, Zambales • Open for remote/freelance work</p>
-            <a class="btn" href="mailto:jeuelalvez@gmail.com">Contact Me — jeuelalvez@gmail.com</a>
-          </div>
+          <h1>Jeuel Alvez <span class="tag">(ErrorEuler)</span></h1>
+          <p class="lead">
+            Aspiring Web Developer | BS Information Technology<br>
+            President Ramon Magsaysay State University • Botolan, Zambales
+          </p>
+          <a href="mailto:jeuelalvez@gmail.com" class="btn">
+            <i class="fas fa-envelope"></i> Get In Touch
+          </a>
         </div>
-        <div style="text-align:right;min-width:150px">
-          <div style="background:rgba(255,255,255,0.03);padding:12px;border-radius:10px;font-size:14px">
-            0945-100-1691<br />jeuelalvez@gmail.com
-          </div>
+
+        <div style="text-align:right; min-width:180px; line-height:1.6;">
+          <strong>📞 0945-100-1691</strong><br>
+          <a href="mailto:jeuelalvez@gmail.com" style="color:var(--accent); text-decoration:none;">
+            jeuelalvez@gmail.com
+          </a>
         </div>
       </header>
 
       <section class="grid">
-        <div>
+        <div class="animate">
           <h2>About Me</h2>
-          <p style="color:var(--muted)">21-year-old aspiring web developer from Zambales, currently studying BS
-            Information Technology. Passionate about building real-world, functional systems — especially for schools
-            and small businesses.</p>
-          <h3 style="margin:16px 0 8px">Strengths</h3>
-          <ul style="color:var(--muted);padding-left:20px">
-            <li>Fast learner & self-motivated</li>
-            <li>Strong attention to detail</li>
-            <li>Problem-solving mindset</li>
-            <li>Team player & good communicator</li>
+          <p style="color:var(--muted); font-size:17px;">
+            21-year-old passionate web developer from Zambales. I love turning ideas into functional, clean, and user-friendly web systems — especially for schools and small local businesses.
+          </p>
+          <h3 style="margin:20px 0 12px 0; color:var(--accent);">Strengths</h3>
+          <ul style="color:var(--muted); padding-left:20px; font-size:16px;">
+            <li>Fast learner with strong attention to detail</li>
+            <li>Problem-solving and logical thinking</li>
+            <li>Good team player and communicator</li>
+            <li>Committed to clean, maintainable code</li>
           </ul>
         </div>
-        <div>
+
+        <div class="animate">
           <h2>Technical Skills</h2>
           <ul class="skills">
-            <li class="skill">HTML</li>
-            <li class="skill">CSS</li>
-            <li class="skill">JavaScript</li>
+            <li class="skill">HTML5</li>
+            <li class="skill">CSS3</li>
+            <li class="skill">JavaScript (ES6+)</li>
             <li class="skill">PHP</li>
             <li class="skill">MySQL</li>
             <li class="skill">Git & GitHub</li>
             <li class="skill">Responsive Design</li>
-            <li class="skill">Basic UX/UI</li>
+            <li class="skill">UI/UX Basics</li>
           </ul>
         </div>
       </section>
 
       <section>
-        <h2>Projects</h2>
+        <h2>Featured Projects</h2>
 
-        <!-- CAPSTONE WITH IMAGES DIRECTLY VISIBLE -->
-        <div class="project">
+        <div class="project animate">
           <h3>Automated Class Scheduling System (Capstone)</h3>
-          <div class="meta">Full-Stack • HTML, CSS, JavaScript, PHP, MySQL • Team Development</div>
-          <p style="color:var(--muted)">Web system built for President Ramon Magsaysay State University to automate
-            class scheduling across campuses. Includes role-based access, schedule generation, conflict detection,
-            approval workflow, and public schedule viewer.</p>
-
+          <p style="color:var(--muted); margin:12px 0;">
+            <strong>Full-Stack • PHP • MySQL • JavaScript</strong><br>
+            Team Project for President Ramon Magsaysay State University
+          </p>
+          <p style="color:var(--muted);">
+            A comprehensive scheduling system with role-based access, automated conflict detection, approval workflow, and public schedule viewer.
+          </p>
           <div class="gallery">
-            <img src="scheduling-dashboard.jpg.png" alt="Program Chair Dashboard">
-            <img src="Screenshot 2025-12-01 011246.png" alt="Public Schedule View">
-            <img src="Screenshot 2025-12-01 011252.png" alt="Login Page">
+            <img src="scheduling-dashboard.jpg.png" alt="Dashboard">
+            <img src="Screenshot 2025-12-01 011246.png" alt="Public View">
+            <img src="Screenshot 2025-12-01 011252.png" alt="Login">
           </div>
         </div>
 
-        <div style="height:16px"></div>
-
-        <div class="project">
-          <h3>Icylicious Cafe — Online Ordering (In Progress)</h3>
-          <div class="meta">Full-Stack • HTML, CSS, JS, PHP, MySQL • Status: Development</div>
-          <p style="color:var(--muted)">Building a complete online ordering + management system for a local cafe.
-            Features product catalog, cart, order tracking, and admin dashboard.</p>
+        <div class="project animate">
+          <h3>Icylicious Cafe — Online Ordering System</h3>
+          <p style="color:var(--muted); margin:12px 0;">
+            <strong>Full-Stack • In Development</strong>
+          </p>
+          <p style="color:var(--muted);">
+            Complete online ordering platform with product catalog, shopping cart, order tracking, and admin management dashboard.
+          </p>
+          <div class="gallery">
+            <img src="1151b3e9-5d66-48b7-b96f-dbf396642630.jpg" alt="Cafe Project">
+            <img src="ae6bf08e-32bb-492b-9beb-83757d92835b.jpg" alt="Cafe Project">
+            <img src="51605bb3-1664-4de3-8681-16c277f15458.jpg" alt="Cafe Project">
+          </div>
         </div>
-
-        <div class="gallery">
-          <img src="1151b3e9-5d66-48b7-b96f-dbf396642630.jpg">
-          <img src="ae6bf08e-32bb-492b-9beb-83757d92835b.jpg" >
-          <img src="51605bb3-1664-4de3-8681-16c277f15458.jpg">
-        </div>
-
       </section>
 
       <section>
         <h2>Education</h2>
-        <p style="color:var(--muted)"><strong>Bachelor of Science in Information Technology</strong><br />President
-          Ramon Magsaysay State University (Ongoing)</p>
-      </section>
-
-      <section>
-        <h2>Contact</h2>
-        <p style="color:var(--muted)">Available for freelance and remote opportunities.<br />
-          Email: <a href="mailto:jeuelalvez@gmail.com"
-            style="color:var(--accent);text-decoration:none">jeuelalvez@gmail.com</a> •
-          Phone: 0945-100-1691</p>
+        <p style="font-size:17px; color:var(--muted);">
+          <strong>Bachelor of Science in Information Technology</strong><br>
+          President Ramon Magsaysay State University (Ongoing)
+        </p>
       </section>
 
       <footer>
-        <div>© 2025 Jeuel Alvez — ErrorEuler</div>
+        © 2026 Jeuel Alvez • Open for freelance & remote opportunities
       </footer>
     </div>
   </div>
 </body>
-
 </html>
