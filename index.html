@@ -15,6 +15,15 @@
       --light: #f1e9dc;
     }
 
+    [data-theme="dark"] {
+      --bg: #0f1724;
+      --card: #1e2937;
+      --accent: #4fd1c5;
+      --text: #e6f0f6;
+      --muted: #94a3b8;
+      --light: #334155;
+    }
+
     * {
       box-sizing: border-box;
       margin: 0;
@@ -22,12 +31,56 @@
     }
 
     body {
-      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      background: linear-gradient(180deg, #f8f4ed 0%, #f1e9dc 100%);
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: var(--bg);
       color: var(--text);
       line-height: 1.7;
-      padding-bottom: 60px;
       overflow-x: hidden;
+      transition: all 0.4s ease;
+    }
+
+    /* Sticky Nav */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--card);
+      border-bottom: 1px solid rgba(44, 122, 123, 0.2);
+      padding: 15px 0;
+    }
+
+    .nav-container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 0 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .nav-logo {
+      font-weight: 800;
+      font-size: 24px;
+      color: var(--accent);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 30px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .theme-toggle {
+      background: none;
+      border: none;
+      font-size: 24px;
+      cursor: pointer;
     }
 
     .container {
@@ -52,20 +105,8 @@
       flex-wrap: wrap;
     }
 
-    h1 {
-      font-size: 42px;
-      font-weight: 800;
-      margin-bottom: 8px;
-    }
-
+    h1 { font-size: 42px; font-weight: 800; margin-bottom: 8px; }
     .tag { color: var(--accent); font-size: 18px; }
-
-    .lead {
-      color: var(--muted);
-      font-size: 17px;
-      margin-top: 12px;
-      max-width: 520px;
-    }
 
     .btn {
       display: inline-flex;
@@ -78,13 +119,6 @@
       font-weight: 700;
       border-radius: 12px;
       text-decoration: none;
-      transition: all 0.3s ease;
-      box-shadow: 0 8px 25px rgba(44, 122, 123, 0.3);
-    }
-
-    .btn:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 15px 35px rgba(44, 122, 123, 0.4);
     }
 
     section {
@@ -106,7 +140,6 @@
       background: var(--accent);
       bottom: -8px;
       left: 0;
-      border-radius: 3px;
     }
 
     .grid {
@@ -115,41 +148,11 @@
       gap: 40px;
     }
 
-    /* ============= SCROLL ANIMATIONS ============= */
-    .animate-on-scroll {
-      opacity: 0;
-      transform: translateY(60px);
-      transition: all 0.8s cubic-bezier(0.25, 0.1, 0.25, 1);
-    }
-
-    .animate-on-scroll.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .scroll-right {
-      animation: slideFromRight 1.1s ease forwards;
-      animation-timeline: view();
-      animation-range: entry 10% cover 50%;
-    }
-
-    /* Staggered delays */
-    .project:nth-child(1) .animate-on-scroll { transition-delay: 0.1s; }
-    .project:nth-child(2) .animate-on-scroll { transition-delay: 0.3s; }
-
-    .gallery img {
-      width: 100%;
-      height: auto;
-      border-radius: 16px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
-      transition: all 0.6s ease;
-      opacity: 0;
-      transform: scale(0.85) translateY(30px);
-    }
-
-    .gallery img.visible {
-      opacity: 1;
-      transform: scale(1) translateY(0);
+    /* Skills */
+    .skills {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 12px;
     }
 
     .skill {
@@ -159,13 +162,12 @@
       color: var(--muted);
       font-weight: 600;
       transition: all 0.4s ease;
-      opacity: 0;
-      transform: translateY(20px);
     }
 
-    .skill.visible {
-      opacity: 1;
-      transform: translateY(0);
+    .skill:hover {
+      transform: translateY(-5px);
+      background: var(--accent);
+      color: white;
     }
 
     .project {
@@ -179,6 +181,14 @@
     .project:hover {
       transform: translateY(-10px);
       box-shadow: 0 25px 50px rgba(0, 0, 0, 0.12);
+    }
+
+    .gallery img {
+      width: 100%;
+      height: auto;
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+      transition: all 0.6s ease;
     }
 
     footer {
@@ -195,6 +205,20 @@
   </style>
 </head>
 <body>
+  <!-- Navigation -->
+  <nav>
+    <div class="nav-container">
+      <div class="nav-logo">ErrorEuler</div>
+      <ul class="nav-links">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Projects</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+      <button class="theme-toggle" id="themeToggle">🌙</button>
+    </div>
+  </nav>
+
   <div class="container">
     <div class="card">
 
@@ -210,7 +234,6 @@
             <i class="fas fa-envelope"></i> Get In Touch
           </a>
         </div>
-
         <div style="text-align:right; min-width:180px; line-height:1.6; font-size:15.5px;">
           <i class="fas fa-phone" style="color:var(--accent); margin-right:8px;"></i>
           <strong>0945-100-1691</strong><br><br>
@@ -237,10 +260,10 @@
           </ul>
         </div>
 
-    <!-- Skills -->
-        <div class="scroll-right">
+        <!-- Skills - FIXED -->
+        <div class="animate-on-scroll">
           <h2>Technical Skills</h2>
-          <ul class="skills" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px;">
+          <ul class="skills">
             <li class="skill">HTML5</li>
             <li class="skill">CSS3</li>
             <li class="skill">JavaScript (ES6+)</li>
@@ -253,65 +276,49 @@
         </div>
       </section>
 
+      <!-- Projects -->
       <section>
         <h2 class="animate-on-scroll">Featured Projects</h2>
 
         <div class="project">
           <div class="animate-on-scroll">
-            <h3>Automated Class Scheduling System (Capstone) Status : Completed</h3>
+            <h3>Automated Class Scheduling System (Capstone) — Completed</h3>
             <p style="color:var(--muted); margin:12px 0;">
-              <strong>Full-Stack • PHP • MySQL • JavaScript</strong><br>
-              Team Project for President Ramon Magsaysay State University
+              <strong>Full-Stack • PHP • MySQL • JavaScript</strong>
             </p>
-            <p style="color:var(--muted);">
-              A comprehensive scheduling system with role-based access, automated conflict detection, approval workflow, and public schedule viewer.
-            </p>
+            <p style="color:var(--muted);">A comprehensive scheduling system...</p>
           </div>
           <div class="gallery">
-            <img src="scheduling-dashboard.jpg.png" alt="Dashboard" class="animate-on-scroll">
-            <img src="Screenshot 2025-12-01 011246.png" alt="Public View" class="animate-on-scroll">
-            <img src="Screenshot 2025-12-01 011252.png" alt="Login" class="animate-on-scroll">
+            <img src="scheduling-dashboard.jpg.png" alt="Dashboard">
+            <img src="Screenshot 2025-12-01 011246.png" alt="Public View">
+            <img src="Screenshot 2025-12-01 011252.png" alt="Login">
           </div>
         </div>
 
         <div class="project">
           <div class="animate-on-scroll">
-            <h3>Icylicious Cafe — Online Ordering System </h3>
-            <h3>Status : Discontinued / future Project</h3>
-            <p style="color:var(--muted); margin:12px 0;">
-              <strong>Full-Stack • In Development</strong>
-            </p>
-            <p style="color:var(--muted);">
-              Complete online ordering platform with product catalog, shopping cart, order tracking, and admin management dashboard.
-            </p>
+            <h3>Icylicious Cafe — Online Ordering System — Discontinued</h3>
+            <p style="color:var(--muted);">Complete online ordering platform...</p>
           </div>
           <div class="gallery">
-            <img src="1151b3e9-5d66-48b7-b96f-dbf396642630.jpg" alt="Cafe" class="animate-on-scroll">
-            <img src="ae6bf08e-32bb-492b-9beb-83757d92835b.jpg" alt="Cafe" class="animate-on-scroll">
-            <img src="51605bb3-1664-4de3-8681-16c277f15458.jpg" alt="Cafe" class="animate-on-scroll">
+            <img src="1151b3e9-5d66-48b7-b96f-dbf396642630.jpg" alt="Cafe">
+            <img src="ae6bf08e-32bb-492b-9beb-83757d92835b.jpg" alt="Cafe">
+            <img src="51605bb3-1664-4de3-8681-16c277f15458.jpg" alt="Cafe">
           </div>
         </div>
-      </section>
 
-              <div class="project">
+        <div class="project">
           <div class="animate-on-scroll">
-            <h3>Rzone Motorcycle motortrading system</h3>
-            <h3>Status : Ongoing</h3>
-            <p style="color:var(--muted); margin:12px 0;">
-              <strong>Full-Stack • In Development</strong>
-            </p>
-            <p style="color:var(--muted);">
-              Complete centralized system with four roles(Admin, CEO, Branch Manager, Inventory Manger, Sales-staff) Built in using Laravel + PHP.
-              Gentle reminder that the project image features only includes the Customer or public landing page only, for client product privacy.
-            </p>
+            <h3>Rzone Motorcycle Trading System — Ongoing</h3>
+            <p style="color:var(--muted);">Laravel + PHP Full-Stack System...</p>
           </div>
           <div class="gallery">
-            <img src="Rzone1.png" alt="Rzone" class="animate-on-scroll">
-            <img src="Rzone2.png" alt="Rzone" class="animate-on-scroll">
-            <img src="Rzone3.png" alt="Rzone" class="animate-on-scroll">
-            <img src="Rzone4.png" alt="Rzone" class="animate-on-scroll">
-            <img src="Rzone5.png" alt="Rzone" class="animate-on-scroll">
-            <img src="Rzone6.png" alt="Rzone" class="animate-on-scroll">
+            <img src="Rzone1.png" alt="Rzone">
+            <img src="Rzone2.png" alt="Rzone">
+            <img src="Rzone3.png" alt="Rzone">
+            <img src="Rzone4.png" alt="Rzone">
+            <img src="Rzone5.png" alt="Rzone">
+            <img src="Rzone6.png" alt="Rzone">
           </div>
         </div>
       </section>
@@ -337,20 +344,27 @@
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry, index) => {
         if (entry.isIntersecting) {
-          // Add small delay for staggered effect
           setTimeout(() => {
             entry.target.classList.add('visible');
           }, index * 80);
         }
       });
-    }, {
-      threshold: 0.15,
-      rootMargin: "0px 0px -50px 0px"
+    }, { threshold: 0.15 });
+
+    document.querySelectorAll('.animate-on-scroll').forEach(el => {
+      observer.observe(el);
     });
 
-    // Observe all animated elements
-    document.querySelectorAll('.animate-on-scroll').forEach((el) => {
-      observer.observe(el);
+    // Dark Mode Toggle
+    const toggle = document.getElementById('themeToggle');
+    toggle.addEventListener('click', () => {
+      if (document.body.getAttribute('data-theme') === 'dark') {
+        document.body.removeAttribute('data-theme');
+        toggle.textContent = '🌙';
+      } else {
+        document.body.setAttribute('data-theme', 'dark');
+        toggle.textContent = '☀️';
+      }
     });
   </script>
 </body>
